@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: hr
+    database: dbt
+    schema: hr
+    description: 'HR-RELATED DATA'
+
+
+    tables:
+      - name: employees
+        loaded_at_field: load_time
+        freshness:
+          warn_after: { count: 12, period: hour }
+          error_after: { count: 24, period: hour }
+          
+        
